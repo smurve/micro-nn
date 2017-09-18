@@ -9,11 +9,21 @@ class NeuralNetwork {
     double[][] M;
     double[] b;
 
+    /**
+     * create a super-simple 2-layer neural network: Input - Dense - Output
+     * @param matrix the parameter matrix
+     * @param bias the bias parameters
+     */
     NeuralNetwork(double[][] matrix, double[] bias ) {
         this.M = matrix;
         this.b = bias;
     }
 
+    /**
+     * This is the feed-forward
+     * @param x the image
+     * @return the classification as a one-hot vector
+     */
     double[] f(double[] x) {
         return sigmoid(
                 add(
@@ -23,7 +33,7 @@ class NeuralNetwork {
     }
 
     /**
-     * gradient with respect to the matrix and the entire batch of images
+     * gradient with respect to the matrix given the entire batch of images
      */
     double[][] dC_dm(List<LabeledImage> images) {
 
@@ -53,7 +63,7 @@ class NeuralNetwork {
     }
 
     /**
-     * gradient with respect to the bias and the entire batch of images
+     * gradient with respect to the bias given the entire batch of images
      */
     double[] dC_db(List<LabeledImage> images) {
 
